@@ -23,6 +23,9 @@
       "plugin": "upload",
       "required": false
     },
+    "comments": {
+      "collection": "comments"
+    },
     "user": {
       "via": "posts",
       "plugin": "users-permissions",

@@ -67,6 +67,10 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "comments": {
+      "collection": "comments",
+      "via": "user"
     }
   }
 }
