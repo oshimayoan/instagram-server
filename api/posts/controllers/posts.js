@@ -20,7 +20,7 @@ module.exports = {
     for (let i = 0; i < entities.length; i++) {
       let relatedComments = await strapi.services.comments.find({postId: entities[i].id})
 
-      let highlightedComments = relatedComments.map(comment => ({
+      let highlightedComments = relatedComments.slice(0, 2).map(comment => ({
         id: comment.id,
         content: comment.content,
         postId: comment.postId,
