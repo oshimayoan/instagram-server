@@ -28,7 +28,7 @@ module.exports = {
           id: comment.user.id,
           username: comment.user.username,
         },
-        createdAt: comment.createdAt,
+        createdAt: comment.created_at,
       }));
 
       let newEntity = { ...entities[i], highlightedComments };
