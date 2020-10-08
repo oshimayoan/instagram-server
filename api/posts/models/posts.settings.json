@@ -24,7 +24,8 @@
       "required": false
     },
     "comments": {
-      "collection": "comments"
+      "collection": "comments",
+      "via": "post"
     },
     "user": {
       "via": "posts",

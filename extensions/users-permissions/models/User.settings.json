@@ -71,6 +71,14 @@
     "comments": {
       "collection": "comments",
       "via": "user"
+    },
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
     }
   }
 }
