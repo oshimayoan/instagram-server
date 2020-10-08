@@ -1,0 +1,30 @@
+diff --git a/node_modules/strapi-connector-bookshelf/lib/utils/store-definition.js b/node_modules/strapi-connector-bookshelf/lib/utils/store-definition.js
+index 0619f5e..5c2dd3d 100644
+--- a/node_modules/strapi-connector-bookshelf/lib/utils/store-definition.js
++++ b/node_modules/strapi-connector-bookshelf/lib/utils/store-definition.js
+@@ -25,14 +25,17 @@ const storeDefinition = async (definition, ORM) => {
+   const defToStore = formatDefinitionToStore(definition);
+   const existingDef = await getDefinitionFromStore(definition, ORM);
+ 
+-  await strapi.models['core_store']
+-    .forge({
+-      id: existingDef ? existingDef.id : undefined,
+-      key: `model_def_${definition.uid}`,
+-      type: 'object',
+-      value: defToStore,
+-    })
+-    .save();
++  const defData = {
++    key: `model_def_${definition.uid}`,
++    type: 'object',
++    value: defToStore,
++  };
++
++  if (existingDef) {
++    return strapi.models['core_store'].forge({ id: existingDef.id }).save(defData);
++  }
++
++  return strapi.models['core_store'].forge(defData).save();
+ };
+ 
+ const didDefinitionChange = async (definition, ORM) => {
